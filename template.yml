@@ -1,11 +1,10 @@
 - hosts: tomcat
   become: true
   vars:
-    variable_to_be_replaced: 'Hello world'
-    inline_variable: 'hello again'
     filepath: /opt/tomcat9/conf/
   tasks:
     - name: Ansible Template Example
       template:
         src: server.xml.j2
         dest: "{{ filepath }}/server.xml"
+      tags: updatefile
